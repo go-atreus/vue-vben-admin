@@ -26,6 +26,8 @@
     "#/*": "./src/*"
   },
   "dependencies": {
+    "remeda": "catalog:",
+    "@axolo/tree-array": "catalog:",
     "@vben/access": "workspace:*",
     "@vben/common-ui": "workspace:*",
     "@vben/constants": "workspace:*",

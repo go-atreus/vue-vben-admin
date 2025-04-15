@@ -6,10 +6,13 @@ import type {
 import { generateAccessible } from '@vben/access';
 import { preferences } from '@vben/preferences';
 
+import { array2tree } from '@axolo/tree-array';
 import { message } from '#/adapter/naive';
-import { getAllMenusApi } from '#/api';
+import { defRouterService } from '#/rpc';
 import { BasicLayout, IFrameView } from '#/layouts';
 import { $t } from '#/locales';
+import { ParentIdEnum } from '#/enums/common';
+import { useAuthStore } from '#/store';
 
 const forbiddenComponent = () => import('#/views/_core/fallback/forbidden.vue');
 
@@ -24,10 +27,59 @@ async function generateAccess(options: GenerateMenuAndRoutesOptions) {
   return await generateAccessible(preferences.app.accessMode, {
     ...options,
     fetchMenuListAsync: async () => {
-      message.loading(`${$t('common.loadingMenu')}...`, {
-        duration: 1.5,
+      // message.loading(`${$t('common.loadingMenu')}...`, {
+      //   duration: 1.5,
+      // });
+      const menuData = await defRouterService.ListRoute({});
+       // 兼容旧版本，将 dashboard 添加目录, 未来将移除
+      // menuData.data.push({
+      //   id: -1,
+      //   component: 'BasicLayout',
+      //   meta: {
+      //     icon: 'ic:baseline-view-in-ar',
+      //     keepAlive: false,
+      //     affixTab: true,
+      //     sort: -1,
+      //     title: $t('route.managementCenter'),
+      //   },
+      //   path: '/dashboard_dir',
+      //   name: 'DashBoardDir',
+      //   parentId: ParentIdEnum.DEFAULT,
+      // });
+
+      const authStore = useAuthStore();
+
+      authStore.elementPermissionList = [];
+      menuData.data.forEach((val, _idx, _arr) => {
+        if (val.component === 'LAYOUT') {
+          val.component = '';
+        }
+
+        if (val.name === 'Dashboard') {
+          val.parentId = -1;
+        }
+
+        val.meta.hideInMenu = val.meta.hideMenu as any;
+        val.meta.hideInTab = val.meta.hideTab as any;
+        val.meta.hideInBreadcrumb = val.meta.hideBreadcrumb as any;
+        val.meta.keepAlive = !val.meta.ignoreKeepAlive as boolean;
+        val.meta.maxNumOfOpenTab = val.meta.dynamicLevel as any;
+        val.meta.affixTab = val.meta.affix as any;
+
+        if (val.permission && val.permission !== '') {
+          authStore.elementPermissionList.push(val.permission);
+        }
       });
-      return await getAllMenusApi();
+
+      const treeData: RouteItem[] = array2tree(
+        menuData.data.filter((val) => val.path !== ''),
+      ) as RouteItem[];
+      treeData.forEach((val, idx, arr) => {
+        if (val.component === '' && arr[idx]) {
+          arr[idx].component = 'BasicLayout';
+        }
+      });
+      return treeData;
     },
     // 可以指定没有权限跳转403页面
     forbiddenComponent,

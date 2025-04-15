@@ -4,6 +4,7 @@ import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 import { DEFAULT_HOME_PATH, LOGIN_PATH } from '@vben/constants';
+import { preferences } from '@vben/preferences';
 import { resetAllStores, useAccessStore, useUserStore } from '@vben/stores';
 
 import { defineStore } from 'pinia';
@@ -11,6 +12,7 @@ import { defineStore } from 'pinia';
 import { notification } from '#/adapter/naive';
 import { getAccessCodesApi, getUserInfoApi, loginApi, logoutApi } from '#/api';
 import { $t } from '#/locales';
+import { defAuthnService } from '#/rpc';
 
 export const useAuthStore = defineStore('auth', () => {
   const accessStore = useAccessStore();
@@ -32,23 +34,26 @@ export const useAuthStore = defineStore('auth', () => {
     let userInfo: null | UserInfo = null;
     try {
       loginLoading.value = true;
-      const { accessToken } = await loginApi(params);
+      const { access_token } = await defAuthnService.Login({
+        username: params.username,
+        password: params.password,
+        grant_type: 'password',
+      });
 
       // 如果成功获取到 accessToken
-      if (accessToken) {
+      if (access_token) {
         // 将 accessToken 存储到 accessStore 中
-        accessStore.setAccessToken(accessToken);
+        accessStore.setAccessToken(access_token);
 
         // 获取用户信息并存储到 accessStore 中
-        const [fetchUserInfoResult, accessCodes] = await Promise.all([
+        const [fetchUserInfoResult] = await Promise.all([
           fetchUserInfo(),
-          getAccessCodesApi(),
         ]);
 
         userInfo = fetchUserInfoResult;
 
         userStore.setUserInfo(userInfo);
-        accessStore.setAccessCodes(accessCodes);
+        // accessStore.setAccessCodes(accessCodes);
 
         if (accessStore.loginExpired) {
           accessStore.setLoginExpired(false);
@@ -95,9 +100,44 @@ export const useAuthStore = defineStore('auth', () => {
     });
   }
 
+  /**
+   * 刷新访问令牌
+   */
+  async function refreshToken() {
+    const accessStore = useAccessStore();
+
+    const resp = await defAuthnService.RefreshToken({
+      grant_type: 'password',
+      refresh_token: accessStore.refreshToken ?? '',
+    });
+    const newToken = resp.access_token;
+
+    accessStore.setAccessToken(newToken);
+
+    return newToken;
+  }
+
+  /**
+   * 重新认证
+   */
+  async function reauthenticate() {
+    console.warn('Access token or refresh token is invalid or expired. ');
+    const accessStore = useAccessStore();
+
+    accessStore.setAccessToken(null);
+    if (
+      preferences.app.loginExpiredMode === 'modal' &&
+      accessStore.isAccessChecked
+    ) {
+      accessStore.setLoginExpired(true);
+    } else {
+      await logout();
+    }
+  }
+
   async function fetchUserInfo() {
     let userInfo: null | UserInfo = null;
-    userInfo = await getUserInfoApi();
+    userInfo = await defAuthnService.GetMe({ id: 0 });
     userStore.setUserInfo(userInfo);
     return userInfo;
   }
@@ -110,6 +150,8 @@ export const useAuthStore = defineStore('auth', () => {
     $reset,
     authLogin,
     fetchUserInfo,
+    reauthenticate,
+    refreshToken,
     loginLoading,
     logout,
   };
