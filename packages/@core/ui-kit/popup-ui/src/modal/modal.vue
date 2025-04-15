@@ -103,7 +103,7 @@ const { dragging, transform } = useModalDraggable(
 );
 
 const firstOpened = ref(false);
-const isClosed = ref(false);
+const isClosed = ref(true);
 
 watch(
   () => state?.value?.isOpen,
@@ -321,7 +321,7 @@ function handleClosed() {
               {{ cancelText || $t('cancel') }}
             </slot>
           </component>
-
+          <slot name="center-footer"></slot>
           <component
             :is="components.PrimaryButton || VbenButton"
             v-if="showConfirmButton"
