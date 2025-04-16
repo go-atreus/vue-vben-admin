@@ -9,7 +9,7 @@ import { $t } from '@vben/locales';
 import { message } from 'ant-design-vue';
 
 import { useVbenForm } from '#/adapter/form';
-import { createDepartment, updateDepartment } from '#/api/sys/department';
+import { defDepartmentService } from '#/rpc';
 
 import { dataFormSchemas } from './schemas';
 
@@ -23,9 +23,9 @@ const gridApi = ref();
 
 async function onSubmit(values: Record<string, any>) {
   const result = isUpdate.value
-    ? await updateDepartment({department:values as DepartmentInfo})
-    : await createDepartment({department:values as DepartmentInfo});
-  if (result) {
+    ? await defDepartmentService.Update(values as DepartmentInfo)
+    : await defDepartmentService.Create(values as DepartmentInfo);
+  if (result.code === 0) {
     message.success(result.msg);
     gridApi.value.reload();
   }

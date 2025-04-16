@@ -11,6 +11,7 @@ import { type Empty } from "../google/protobuf/empty.pb";
 
 export interface Department {
   id: number;
+  status: string | null;
   name: string;
   ancestors: string | null;
   leader: string | null;

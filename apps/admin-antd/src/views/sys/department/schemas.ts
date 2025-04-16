@@ -9,7 +9,7 @@ import { $t } from '@vben/locales';
 import { Switch } from 'ant-design-vue';
 
 import { z } from '#/adapter/form';
-import { getDepartmentList, updateDepartment } from '#/api/sys/department';
+import { defDepartmentService } from '#/rpc';
 import { ParentIdEnum } from '#/enums/common';
 
 export const tableColumns: VxeGridProps = {
@@ -35,7 +35,8 @@ export const tableColumns: VxeGridProps = {
             checked: e.row.status === 1,
             onClick: () => {
               const newStatus = e.row.status === 1 ? 2 : 1;
-              updateDepartment({ id: e.row.id, status: newStatus }).then(() => {
+              e.row.status = newStatus
+              defDepartmentService.Update(e.row).then(() => {
                 e.row.status = newStatus;
               });
             },
@@ -91,13 +92,13 @@ export const dataFormSchemas: VbenFormProps = {
       component: 'ApiTreeSelect',
       rules: 'required',
       componentProps: {
-        api: getDepartmentList,
+        api: defDepartmentService.List,
         params: {
           page: 1,
           pageSize: 1000,
         },
-        resultField: 'data.data',
-        labelField: 'trans',
+        resultField: 'departmentList',
+        labelField: 'name',
         valueField: 'id',
         defaultValue: {
           id: ParentIdEnum.DEFAULT,
@@ -154,7 +155,7 @@ export const dataFormSchemas: VbenFormProps = {
     {
       fieldName: 'status',
       label: $t('sys.department.status'),
-      component: 'RadioButtonGroup',
+      component: 'RadioGroup',
       defaultValue: 1,
       componentProps: {
         options: [

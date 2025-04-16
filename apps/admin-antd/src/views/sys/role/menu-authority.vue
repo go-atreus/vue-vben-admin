@@ -54,7 +54,7 @@ async function getMenuData(roleId: number) {
   try {
     treeMenuData.value = [];
     const data = await defMenuService.ListMenu({});
-    treeMenuData.value = buildDataNode(data.data, {
+    treeMenuData.value = buildDataNode(data.menuList, {
       idKeyField: 'id',
       parentKeyField: 'parentId',
       childrenKeyField: 'children',

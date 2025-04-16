@@ -14,7 +14,7 @@ import { Button, Modal } from 'ant-design-vue';
 import { isPlainObject } from 'remeda';
 
 import { useVbenVxeGrid } from '#/adapter/vxe-table';
-import { deleteDepartment, getDepartmentList } from '#/api/sys/department';
+import { defDepartmentService } from '#/rpc';
 import { TableAction } from '#/components/table/table-action';
 
 import DepartmentForm from './form.vue';
@@ -98,9 +98,12 @@ const gridOptions: VxeGridProps<DepartmentInfo> = {
   keepSource: true,
   pagerConfig: {},
   proxyConfig: {
+    response:{
+      result:"departmentList"
+    },
     ajax: {
       query: async ({ page }, formValues) => {
-        const res = await getDepartmentList({
+        const res = await defDepartmentService.List({
           page: page.currentPage,
           pageSize: page.pageSize,
           ...formValues,
@@ -146,7 +149,7 @@ function handleBatchDelete() {
 }
 
 async function batchDelete(ids: any[]) {
-  const result = await deleteDepartment({
+  const result = await defDepartmentService.Delete({
     id: ids[0],
   });
   if (result) {

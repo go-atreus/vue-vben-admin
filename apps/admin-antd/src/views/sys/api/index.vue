@@ -14,7 +14,7 @@ import { Button, Modal } from 'ant-design-vue';
 import { isPlainObject } from 'remeda';
 
 import { useVbenVxeGrid } from '#/adapter/vxe-table';
-import { deleteApi, getApiList } from '#/api/sys/api';
+import { defApiService } from '#/rpc';
 import { TableAction } from '#/components/table/table-action';
 
 import ApiForm from './form.vue';
@@ -100,7 +100,7 @@ const gridOptions: VxeGridProps<ApiInfo> = {
   proxyConfig: {
     ajax: {
       query: async ({ page }, formValues) => {
-        const res = await getApiList({
+        const res = await defApiService.List({
           page: page.currentPage,
           pageSize: page.pageSize,
           ...formValues,
@@ -146,7 +146,7 @@ function handleBatchDelete() {
 }
 
 async function batchDelete(ids: any[]) {
-  const result = await deleteApi({
+  const result = await defApiService.Delete({
     ids,
   });
   if (result.code === 0) {

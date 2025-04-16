@@ -11,7 +11,7 @@ import { Button, Card, Col, message, Modal, Row, Tree } from 'ant-design-vue';
 import { isPlainObject } from 'remeda';
 
 import { useVbenVxeGrid } from '#/adapter/vxe-table';
-import { defAuthnService } from '#/rpc';
+import { defAuthnService, defDepartmentService } from '#/rpc';
 import { defUserService } from '#/rpc';
 import { type ActionItem, TableAction } from '#/components/table/table-action';
 import { buildDataNode } from '#/utils/tree';
@@ -29,9 +29,9 @@ const treeData = ref();
 const selectedDepartmentId = ref();
 
 async function fetchDepartmentData() {
-  const deptData = await getDepartmentList({ page: 1, pageSize: 1000 });
-  treeData.value = buildDataNode(deptData.data.data, {
-    labelField: 'trans',
+  const deptData = await defDepartmentService.List({ page: 1, pageSize: 1000 });
+  treeData.value = buildDataNode(deptData.departmentList, {
+    labelField: 'name',
     valueField: 'id',
     idKeyField: 'id',
     childrenKeyField: 'children',

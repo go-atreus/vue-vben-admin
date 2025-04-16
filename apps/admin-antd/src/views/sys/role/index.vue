@@ -12,6 +12,7 @@ import { $t } from '@vben/locales';
 
 import { Button, Modal } from 'ant-design-vue';
 import { isPlainObject } from 'remeda';
+import { TableAction } from '#/components/table/table-action';
 
 import { useVbenVxeGrid } from '#/adapter/vxe-table';
 import { defRoleService } from '#/rpc';
@@ -81,7 +82,7 @@ const gridOptions: VxeGridProps<RoleInfo> = {
       field: 'action',
       slots: {
         default: ({ row }) =>
-          h({
+          h(TableAction,{
             actions: [
               {
                 type: 'link',
