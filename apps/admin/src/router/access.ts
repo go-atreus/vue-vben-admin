@@ -31,21 +31,6 @@ async function generateAccess(options: GenerateMenuAndRoutesOptions) {
       //   duration: 1.5,
       // });
       const menuData = await defRouterService.ListRoute({});
-       // 兼容旧版本，将 dashboard 添加目录, 未来将移除
-      // menuData.data.push({
-      //   id: -1,
-      //   component: 'BasicLayout',
-      //   meta: {
-      //     icon: 'ic:baseline-view-in-ar',
-      //     keepAlive: false,
-      //     affixTab: true,
-      //     sort: -1,
-      //     title: $t('route.managementCenter'),
-      //   },
-      //   path: '/dashboard_dir',
-      //   name: 'DashBoardDir',
-      //   parentId: ParentIdEnum.DEFAULT,
-      // });
 
       const authStore = useAuthStore();
 

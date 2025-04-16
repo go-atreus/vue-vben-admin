@@ -14,8 +14,7 @@ import { Button, Modal } from 'ant-design-vue';
 import { isPlainObject } from 'remeda';
 
 import { useVbenVxeGrid } from '#/adapter/vxe-table';
-import { deleteRole, getRoleList } from '#/api/sys/role';
-import { TableAction } from '#/components/table/table-action';
+import { defRoleService } from '#/rpc';
 import ApiAuthorityModal from '#/views/sys/role/api-authority.vue';
 import MenuAuthorityModal from '#/views/sys/role/menu-authority.vue';
 
@@ -82,7 +81,7 @@ const gridOptions: VxeGridProps<RoleInfo> = {
       field: 'action',
       slots: {
         default: ({ row }) =>
-          h(TableAction, {
+          h({
             actions: [
               {
                 type: 'link',
@@ -127,7 +126,7 @@ const gridOptions: VxeGridProps<RoleInfo> = {
   proxyConfig: {
     ajax: {
       query: async ({ page }, formValues) => {
-        const res = await getRoleList({
+        const res = await defRoleService.ListRole({
           page: page.currentPage,
           pageSize: page.pageSize,
           ...formValues,
@@ -187,7 +186,7 @@ function handleBatchDelete() {
 }
 
 async function batchDelete(ids: any[]) {
-  const result = await deleteRole({
+  const result = await defRoleService.Delete({
     ids,
   });
   if (result.code === 0) {

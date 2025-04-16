@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import type { VxeGridProps } from '#/adapter/vxe-table';
 
-import { h } from 'vue';
-
 import { Page, useVbenModal } from '@vben/common-ui';
 import { $t } from '@vben/locales';
 
@@ -51,7 +49,6 @@ const gridOptions: VxeGridProps = {
       query: async (_formValues) => {
         const res = await defMenuService
           .ListMenu({});
-        console.log(res);
         return res;
       },
     },

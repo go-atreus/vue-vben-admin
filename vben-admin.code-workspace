@@ -5,6 +5,10 @@
       "path": "apps/admin",
     },
     {
+      "name": "@vben/web-antd",
+      "path": "apps/admin-antd",
+    },
+    {
       "name": "@vben/commitlint-config",
       "path": "internal/lint-configs/commitlint-config",
     },

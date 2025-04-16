@@ -9,7 +9,7 @@ import { $t } from '@vben/locales';
 import { message } from 'ant-design-vue';
 
 import { useVbenForm } from '#/adapter/form';
-import { createRole, updateRole } from '#/api/sys/role';
+import { defRoleService } from '#/rpc';
 
 import { dataFormSchemas } from './schemas';
 
@@ -23,8 +23,8 @@ const gridApi = ref();
 
 async function onSubmit(values: Record<string, any>) {
   const result = isUpdate.value
-    ? await updateRole({role:values as RoleInfo})
-    : await createRole({role: values as RoleInfo});
+    ? await defRoleService.UpdateRole({role:values as RoleInfo})
+    : await defRoleService.Create({role: values as RoleInfo});
   if (result) {
     message.success(result.msg);
     gridApi.value.reload();

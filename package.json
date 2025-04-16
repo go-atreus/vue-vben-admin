@@ -61,6 +61,7 @@
     "version": "pnpm exec changeset version && pnpm install --no-frozen-lockfile"
   },
   "devDependencies": {
+    "@axolo/tree-array": "catalog:",
     "@changesets/changelog-github": "catalog:",
     "@changesets/cli": "catalog:",
     "@playwright/test": "catalog:",
