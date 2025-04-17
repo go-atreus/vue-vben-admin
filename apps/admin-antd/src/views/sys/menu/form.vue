@@ -3,7 +3,7 @@ import type { MenuInfoPlain } from '#/api/sys/model/menuModel';
 
 import { ref } from 'vue';
 
-import { useVbenModal } from '@vben/common-ui';
+import { useVbenDrawer, useVbenModal } from '@vben/common-ui';
 import { $t } from '@vben/locales';
 
 import { message } from 'ant-design-vue';
@@ -50,8 +50,8 @@ const [Form, formApi] = useVbenForm({
   wrapperClass: 'grid-cols-2',
 });
 
-const [Modal, modalApi] = useVbenModal({
-  fullscreenButton: false,
+const [Drawer, modalApi] = useVbenDrawer({
+  // fullscreenButton: false,
   onCancel() {
     modalApi.close();
   },
@@ -75,7 +75,7 @@ const [Modal, modalApi] = useVbenModal({
 defineExpose(modalApi);
 </script>
 <template>
-  <Modal class="w-1/2">
+  <Drawer class="w-1/2">
     <Form />
-  </Modal>
+  </Drawer>
 </template>

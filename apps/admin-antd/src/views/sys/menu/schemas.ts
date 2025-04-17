@@ -136,7 +136,7 @@ export const dataFormSchemas: VbenFormProps = {
       component: 'ApiTreeSelect',
       componentProps: {
         api: defMenuService.ListMenu,
-        resultField: 'data',
+        resultField: 'menuList',
         labelField: 'title',
         valueField: 'id',
         defaultValue: {
@@ -151,7 +151,7 @@ export const dataFormSchemas: VbenFormProps = {
     {
       fieldName: 'icon',
       label: $t('sys.menu.icon'),
-      component: 'Input', // todo: icon picker
+      component: 'IconPicker', // todo: icon picker
     },
     {
       fieldName: 'serviceName',

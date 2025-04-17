@@ -47,7 +47,7 @@ async function generateAccess(options: GenerateMenuAndRoutesOptions) {
         val.meta.hideInBreadcrumb = val.meta.hideBreadcrumb as any;
         val.meta.keepAlive = !val.meta.ignoreKeepAlive as boolean;
         val.meta.maxNumOfOpenTab = val.meta.dynamicLevel as any;
-        val.meta.affixTab = val.meta.affix as any;
+        val.meta.affixTab = val.meta.affix as boolean;
 
         if (val.permission && val.permission !== '') {
           authStore.elementPermissionList.push(val.permission);
