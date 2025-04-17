@@ -147,6 +147,7 @@ async function initComponentAdapter() {
       fieldNames: { label: 'label', value: 'value', children: 'children' },
       loadingSlot: 'suffixIcon',
       modelPropName: 'value',
+      class: "w-full",
       optionsPropName: 'treeData',
       visibleEvent: 'onVisibleChange',
     }),

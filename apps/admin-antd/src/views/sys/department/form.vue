@@ -39,7 +39,7 @@ const [Form, formApi] = useVbenForm({
 });
 
 const [Modal, modalApi] = useVbenModal({
-  fullscreenButton: false,
+  fullscreenButton: true,
   onCancel() {
     modalApi.close();
   },

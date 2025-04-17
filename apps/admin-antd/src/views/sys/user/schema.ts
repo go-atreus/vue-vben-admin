@@ -190,7 +190,7 @@ export const dataFormSchemas: VbenFormProps = {
     {
       fieldName: 'status',
       label: $t('common.status'),
-      component: 'RadioButtonGroup',
+      component: 'RadioGroup',
       defaultValue: 1,
       componentProps: {
         options: [

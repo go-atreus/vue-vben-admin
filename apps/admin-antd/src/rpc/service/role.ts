@@ -22,7 +22,8 @@ class RoleServiceImpl implements RoleService {
     });
   }
   async Update(request: UpdateRoleRequest): Promise<Role> {
-    throw new Error('Method not implemented.');
+    const id = request.role?.id;
+    return await requestClient.put<Role>(`/roles/${id}`, request);
   }
   async GetApiAuthority(request: IDReq): Promise<RoleApiList> {
     return await requestClient.post<RoleApiList>('/authority/api/role', request);
@@ -55,9 +56,9 @@ class RoleServiceImpl implements RoleService {
   }
 
   async UpdateRole(request: UpdateRoleRequest): Promise<Empty> {
-    const id = request.role?.id;
-    if (request.role !== null) request.role.id = undefined;
-    return await requestClient.put<Empty>(`/roles/${id}`, request);
+    const id = request?.id;
+    if (request.role !== null) request.id = undefined;
+    return await requestClient.put<Empty>(`/roles/${id}`, {role: request});
   }
 }
 

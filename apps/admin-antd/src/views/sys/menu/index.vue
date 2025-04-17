@@ -3,6 +3,7 @@ import type { VxeGridProps } from '#/adapter/vxe-table';
 
 import { Page, useVbenModal } from '@vben/common-ui';
 import { $t } from '@vben/locales';
+import { h } from 'vue';
 
 import { Button } from 'ant-design-vue';
 import { isPlainObject } from 'remeda';
@@ -11,6 +12,7 @@ import { useVbenVxeGrid } from '#/adapter/vxe-table';
 import { defMenuService } from '#/rpc';
 
 import MenuForm from './form.vue';
+import { type ActionItem, TableAction } from '#/components/table/table-action';
 import { tableColumns } from './schemas';
 
 defineOptions({
@@ -31,7 +33,32 @@ const gridOptions: VxeGridProps = {
     {
       title: $t('common.action'),
       fixed: 'right',
-      field: 'action'
+      field: 'action',
+      slots: {
+        default: ({ row }) =>
+          h(TableAction, {
+            actions: [
+              {
+                type: 'link',
+                size: 'small',
+                icon: 'clarity:note-edit-line',
+                tooltip: $t('common.edit'),
+                onClick: openFormModal.bind(null, row),
+              },
+              {
+                icon: 'ant-design:delete-outlined',
+                type: 'link',
+                color: 'error',
+                tooltip: $t('common.delete'),
+                popConfirm: {
+                  title: $t('common.deleteConfirm'),
+                  placement: 'left',
+                  confirm: batchDelete.bind(null, [row.id]),
+                },
+              },
+            ] as ActionItem[],
+          }),
+      },
     },
   ],
   height: 'auto',

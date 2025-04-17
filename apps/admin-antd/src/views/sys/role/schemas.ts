@@ -35,7 +35,8 @@ export const tableColumns: VxeGridProps = {
             checked: e.row.status === 1,
             onClick: () => {
               const newStatus = e.row.status === 1 ? 2 : 1;
-              defRoleService.UpdateRole({ id: e.row.id, status: newStatus }).then(() => {
+              e.row.status = newStatus
+              defRoleService.UpdateRole(e.row).then(() => {
                 e.row.status = newStatus;
               });
             },
@@ -107,7 +108,7 @@ export const dataFormSchemas: VbenFormProps = {
     {
       fieldName: 'status',
       label: $t('common.status'),
-      component: 'RadioButtonGroup',
+      component: 'RadioGroup',
       defaultValue: 1,
       componentProps: {
         options: [

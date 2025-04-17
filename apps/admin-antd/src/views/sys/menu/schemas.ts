@@ -56,7 +56,7 @@ export const tableColumns: VxeGridProps = {
           return h(
             Tag,
             {
-              color: record.row.disabled ? 'read' : 'green',
+              color: record.row.disabled ? 'red' : 'green',
             },
             () => resultText,
           );
@@ -74,7 +74,7 @@ export const tableColumns: VxeGridProps = {
           return h(
             Tag,
             {
-              color: record.row.disabled ? 'read' : 'green',
+              color: record.row.disabled ? 'red' : 'green',
             },
             () => resultText,
           );
@@ -104,7 +104,7 @@ export const dataFormSchemas: VbenFormProps = {
     {
       fieldName: 'menuType',
       label: $t('sys.menu.type'),
-      component: 'RadioButtonGroup',
+      component: 'RadioGroup',
       defaultValue: 1,
       componentProps: {
         options: [
@@ -265,7 +265,7 @@ export const dataFormSchemas: VbenFormProps = {
     {
       fieldName: 'disabled',
       label: $t('common.status'),
-      component: 'RadioButtonGroup',
+      component: 'RadioGroup',
       defaultValue: false,
       componentProps: {
         options: [
@@ -278,7 +278,7 @@ export const dataFormSchemas: VbenFormProps = {
     {
       fieldName: 'ignoreKeepAlive',
       label: $t('sys.menu.isKeepAlive'),
-      component: 'RadioButtonGroup',
+      component: 'RadioGroup',
       defaultValue: false,
       componentProps: {
         options: [
@@ -297,7 +297,7 @@ export const dataFormSchemas: VbenFormProps = {
     {
       fieldName: 'hideMenu',
       label: $t('sys.menu.isHidden'),
-      component: 'RadioButtonGroup',
+      component: 'RadioGroup',
       defaultValue: false,
       componentProps: {
         options: [
@@ -316,7 +316,7 @@ export const dataFormSchemas: VbenFormProps = {
     {
       fieldName: 'hideBreadcrumb',
       label: $t('sys.menu.isBreadcrumbShown'),
-      component: 'RadioButtonGroup',
+      component: 'RadioGroup',
       defaultValue: false,
       componentProps: {
         options: [
@@ -335,7 +335,7 @@ export const dataFormSchemas: VbenFormProps = {
     {
       fieldName: 'hideTab',
       label: $t('sys.menu.hideTab'),
-      component: 'RadioButtonGroup',
+      component: 'RadioGroup',
       defaultValue: false,
       componentProps: {
         options: [
@@ -354,7 +354,7 @@ export const dataFormSchemas: VbenFormProps = {
     {
       fieldName: 'carryParam',
       label: $t('sys.menu.carryParam'),
-      component: 'RadioButtonGroup',
+      component: 'RadioGroup',
       defaultValue: false,
       componentProps: {
         options: [
@@ -373,7 +373,7 @@ export const dataFormSchemas: VbenFormProps = {
     {
       fieldName: 'hideChildrenInMenu',
       label: $t('sys.menu.hideChildrenInMenu'),
-      component: 'RadioButtonGroup',
+      component: 'RadioGroup',
       defaultValue: false,
       componentProps: {
         options: [
@@ -392,7 +392,7 @@ export const dataFormSchemas: VbenFormProps = {
     {
       fieldName: 'affix',
       label: $t('sys.menu.affix'),
-      component: 'RadioButtonGroup',
+      component: 'RadioGroup',
       defaultValue: false,
       componentProps: {
         options: [
