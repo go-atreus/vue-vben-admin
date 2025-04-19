@@ -28,6 +28,12 @@ import * as echarts from 'echarts/core';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 
+import { VisualMapComponent, GeoComponent } from 'echarts/components';
+
+import { MapChart, EffectScatterChart } from 'echarts/charts';
+
+echarts.use([EffectScatterChart, MapChart, VisualMapComponent, GeoComponent]);
+
 // 通过 ComposeOption 来组合出一个只有必须组件和图表的 Option 类型
 export type ECOption = ComposeOption<
   | BarSeriesOption

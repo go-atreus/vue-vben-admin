@@ -64,7 +64,6 @@ function createRequestClient(baseURL: string) {
       const { data: responseData, status } = response;
 
       // TODO 根据Kratos进行定制
-      console.log(response)
 
       if (status >= 200 && status < 400) {
         return responseData;

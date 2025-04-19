@@ -13,6 +13,7 @@ packages:
   - docs
   - playground
 catalog:
+  'countup.js': ^2.8.0
   remeda: ^2.19.0
   '@axolo/tree-array': ^0.6.0
   '@ast-grep/napi': ^0.32.3
@@ -88,6 +89,7 @@ catalog:
   defu: ^6.1.4
   depcheck: ^1.4.7
   dotenv: ^16.4.7
+  '@visactor/vchart': ^1.13.8
   echarts: ^5.6.0
   element-plus: ^2.9.7
   eslint: ^9.24.0
@@ -118,6 +120,7 @@ catalog:
   jsonc-eslint-parser: ^2.4.0
   jsonwebtoken: ^9.0.2
   lint-staged: ^15.5.0
+  lodash-es: 4.17.21
   lodash.clonedeep: ^4.5.0
   lodash.get: ^4.4.2
   lodash.set: ^4.3.2

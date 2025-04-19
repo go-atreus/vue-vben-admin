@@ -1,4 +1,6 @@
 import { defineConfig } from '@vben/vite-config';
+import path from 'path';
+
 
 export default defineConfig(async () => {
   return {

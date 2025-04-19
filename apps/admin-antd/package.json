@@ -26,6 +26,10 @@
     "#/*": "./src/*"
   },
   "dependencies": {
+    "countup.js":"catalog:",
+    "@visactor/vchart":"catalog:",
+    "lodash-es": "catalog:",
+    "echarts": "catalog:",
     "@iconify/vue": "catalog:",
     "remeda": "catalog:",
     "@axolo/tree-array": "catalog:",

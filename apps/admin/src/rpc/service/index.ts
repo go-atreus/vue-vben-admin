@@ -1,6 +1,0 @@
-export * from "./user"
-export * from "./authn"
-export * from "./router"
-export * from "./menu"
-export * from "./role"
-export * from "./api"
