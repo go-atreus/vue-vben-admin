@@ -25,6 +25,11 @@ import LeftTop from './left-top.vue';
 import Header from './header.vue';
 import { ScaleScreen } from '#/components/scale-screen';
 import CenterBottom from './center-bottom.vue';
+import LeftBottom from './left-bottom.vue';
+import RightTop from './right-top.vue';
+import LeftCenter from './left-center.vue';
+import RightBottom from './right-bottom.vue';
+import RightCenter from './right-center.vue';
 
 const overviewItems: AnalysisOverviewItem[] = [
   {
@@ -95,14 +100,14 @@ const chartTabs: TabOption[] = [
             class="contetn_left-center contetn_lr-item"
             title="用户总览"
           >
-            <LeftTop />
+            <LeftCenter />
           </ItemWrap>
           <ItemWrap
             class="contetn_left-bottom contetn_lr-item"
             title="设备提醒"
             style="padding: 0 10px 16px 10px"
           >
-            <LeftTop />
+            <LeftBottom />
           </ItemWrap>
         </div>
         <div class="contetn_center">
@@ -117,20 +122,20 @@ const chartTabs: TabOption[] = [
             class="contetn_left-bottom contetn_lr-item"
             title="报警次数"
           >
-            <LeftTop />
+            <RightTop />
           </ItemWrap>
           <ItemWrap
             class="contetn_left-bottom contetn_lr-item"
             title="报警排名(TOP8)"
             style="padding: 0 10px 16px 10px"
           >
-            <LeftTop />
+            <RightCenter />
           </ItemWrap>
           <ItemWrap
             class="contetn_left-bottom contetn_lr-item"
             title="数据统计图 "
           >
-            <LeftTop />
+            <RightBottom />
           </ItemWrap>
         </div>
       </div>

@@ -5,6 +5,8 @@ import { graphic } from "echarts/core";
 import { message } from "ant-design-vue";
 import { EchartsUI, useEcharts, type EchartsUIType } from "@vben/plugins/echarts";
 
+import installPlan from "#/assets/data/install-plan.json";
+
 const chartRef = ref<EchartsUIType>();
 const { renderEcharts } = useEcharts(chartRef);
 
@@ -145,13 +147,13 @@ const setOption = async (newData: any) => {
   };
 };
 onMounted(() => {
-  setOption({})
-  renderEcharts(option);
+  setOption(installPlan)
+  renderEcharts(option.value);
 });
 </script>
 
 <template>
-  <EchartsUI class="chart"  ref="chartRef" />
+  <EchartsUI class="chart" height="266px"  ref="chartRef" />
 </template>
 
 <style scoped lang="scss"></style>

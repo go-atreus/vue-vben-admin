@@ -17,10 +17,10 @@ export class ApiServiceImpl implements SysApiService {
       resolve({
         success: true,
         data: {
-          alarmNum: 100,
-          offlineNum: 100,
-          onlineNum: 100,
-          totalNum: 100,
+          alarmNum: 934,
+          offlineNum: 5,
+          onlineNum: 693,
+          totalNum: 698,
         },
       }),
     );

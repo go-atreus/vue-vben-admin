@@ -1,0 +1,182 @@
+[
+  {
+      "provinceName": "河北省",
+      "cityName": "九江市",
+      "countyName": "南沙群岛",
+      "createTime": "2015-08-07 21:03:45",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10000,
+      "onlineState": 0
+  },
+  {
+      "provinceName": "西藏自治区",
+      "cityName": "荆州市",
+      "countyName": "阳信县",
+      "createTime": "2008-06-18 23:20:44",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10001,
+      "onlineState": 0
+  },
+  {
+      "provinceName": "江苏省",
+      "cityName": "白山市",
+      "countyName": "阳东县",
+      "createTime": "2017-11-17 00:02:22",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10002,
+      "onlineState": 1
+  },
+  {
+      "provinceName": "内蒙古自治区",
+      "cityName": "山南地区",
+      "countyName": "七美乡",
+      "createTime": "1997-07-05 17:53:37",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10003,
+      "onlineState": 0
+  },
+  {
+      "provinceName": "广东省",
+      "cityName": "秦皇岛市",
+      "countyName": "-",
+      "createTime": "2021-03-06 13:30:40",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10004,
+      "onlineState": 0
+  },
+  {
+      "provinceName": "江苏省",
+      "cityName": "甘孜藏族自治州",
+      "countyName": "故城县",
+      "createTime": "1981-06-27 19:22:19",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10005,
+      "onlineState": 1
+  },
+  {
+      "provinceName": "湖北省",
+      "cityName": "延安市",
+      "countyName": "东丽区",
+      "createTime": "1986-05-13 05:08:48",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10006,
+      "onlineState": 0
+  },
+  {
+      "provinceName": "福建省",
+      "cityName": "达州市",
+      "countyName": "贵南县",
+      "createTime": "2012-07-05 16:15:11",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10007,
+      "onlineState": 1
+  },
+  {
+      "provinceName": "河北省",
+      "cityName": "湛江市",
+      "countyName": "扶风县",
+      "createTime": "2001-04-29 05:15:09",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10008,
+      "onlineState": 0
+  },
+  {
+      "provinceName": "河北省",
+      "cityName": "三沙市",
+      "countyName": "渝水区",
+      "createTime": "2022-07-02 15:59:10",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10009,
+      "onlineState": 0
+  },
+  {
+      "provinceName": "吉林省",
+      "cityName": "承德市",
+      "countyName": "其它区",
+      "createTime": "2023-04-12 11:11:49",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10010,
+      "onlineState": 1
+  },
+  {
+      "provinceName": "云南省",
+      "cityName": "商丘市",
+      "countyName": "建湖县",
+      "createTime": "2018-04-14 21:56:27",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10011,
+      "onlineState": 1
+  },
+  {
+      "provinceName": "澳门特别行政区",
+      "cityName": "离岛",
+      "countyName": "应城市",
+      "createTime": "2000-05-14 22:29:39",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10012,
+      "onlineState": 1
+  },
+  {
+      "provinceName": "天津",
+      "cityName": "新界",
+      "countyName": "万峦乡",
+      "createTime": "1987-01-04 21:30:39",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10013,
+      "onlineState": 0
+  },
+  {
+      "provinceName": "浙江省",
+      "cityName": "九龙",
+      "countyName": "长兴县",
+      "createTime": "1987-01-07 14:54:32",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10014,
+      "onlineState": 0
+  },
+  {
+      "provinceName": "辽宁省",
+      "cityName": "石家庄市",
+      "countyName": "渝中区",
+      "createTime": "2000-11-19 17:58:33",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10015,
+      "onlineState": 0
+  },
+  {
+      "provinceName": "吉林省",
+      "cityName": "黔东南苗族侗族自治州",
+      "countyName": "宜丰县",
+      "createTime": "1980-10-22 23:10:45",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10016,
+      "onlineState": 1
+  },
+  {
+      "provinceName": "山西省",
+      "cityName": "常州市",
+      "countyName": "其它区",
+      "createTime": "2024-04-28 07:49:54",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10017,
+      "onlineState": 1
+  },
+  {
+      "provinceName": "河北省",
+      "cityName": "鸡西市",
+      "countyName": "北碚区",
+      "createTime": "1987-09-27 18:34:01",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10018,
+      "onlineState": 0
+  },
+  {
+      "provinceName": "海南省",
+      "cityName": "安康市",
+      "countyName": "樟树市",
+      "createTime": "2015-08-09 22:05:31",
+      "deviceId": "6c512d754bbcd6d7cd86abce0e0cac58",
+      "gatewayno": 10019,
+      "onlineState": 1
+  }
+]

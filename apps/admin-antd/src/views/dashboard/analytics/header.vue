@@ -30,7 +30,7 @@ timeFn()
         <span class="title-text">智回收可视化平台</span>
       </div>
     </div>
-    <div class="timers">
+    <div class="timers text-white">
       {{ dateData.dateYear }} {{ dateData.dateWeek }} {{ dateData.dateDay }}
 
       <div class="setting_icon"   >
