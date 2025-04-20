@@ -11,8 +11,8 @@ import { type Empty } from "../google/protobuf/empty.pb";
 
 export interface Department {
   id: number;
-  status: string | null;
-  name: string;
+  status: number;
+  name: string | null;
   ancestors: string | null;
   leader: string | null;
   phone: string | null;
@@ -208,6 +208,7 @@ export interface BatchCreatePositionsResponse {
 
 export interface Role {
   id: number;
+  status: number;
   name: string;
   code: string;
   defaultRouter: string;
@@ -263,6 +264,61 @@ export interface BatchCreateRolesRequest {
 
 export interface BatchCreateRolesResponse {
   roles: Role[];
+}
+
+export interface Street {
+  id: string;
+  name: string;
+  code: string;
+  address: string;
+}
+
+export interface CreateStreetRequest {
+  street: Street | null;
+}
+
+export interface GetStreetRequest {
+  id: string;
+  view: GetStreetRequest_View;
+}
+
+export enum GetStreetRequest_View {
+  VIEW_UNSPECIFIED = "VIEW_UNSPECIFIED",
+  BASIC = "BASIC",
+  WITH_EDGE_IDS = "WITH_EDGE_IDS",
+}
+
+export interface UpdateStreetRequest {
+  street: Street | null;
+}
+
+export interface DeleteStreetRequest {
+  id: string;
+}
+
+export interface ListStreetRequest {
+  pageSize: number;
+  pageToken: string;
+  view: ListStreetRequest_View;
+}
+
+export enum ListStreetRequest_View {
+  VIEW_UNSPECIFIED = "VIEW_UNSPECIFIED",
+  BASIC = "BASIC",
+  WITH_EDGE_IDS = "WITH_EDGE_IDS",
+}
+
+export interface ListStreetResponse {
+  streetList: Street[];
+  nextPageToken: string;
+}
+
+export interface BatchCreateStreetsRequest {
+  requests: CreateStreetRequest[];
+}
+
+export interface BatchCreateStreetsResponse {
+  streets: Street[];
 }
 
 export interface SysApi {
@@ -325,7 +381,7 @@ export interface BatchCreateSysApisResponse {
 
 export interface User {
   id: number;
-  status: string | null;
+  status: number;
   username: string;
   password: string;
   nickname: string;
@@ -390,6 +446,61 @@ export interface BatchCreateUsersResponse {
   users: User[];
 }
 
+export interface Village {
+  id: string;
+  name: string;
+  code: string;
+  streets: Street[];
+}
+
+export interface CreateVillageRequest {
+  village: Village | null;
+}
+
+export interface GetVillageRequest {
+  id: string;
+  view: GetVillageRequest_View;
+}
+
+export enum GetVillageRequest_View {
+  VIEW_UNSPECIFIED = "VIEW_UNSPECIFIED",
+  BASIC = "BASIC",
+  WITH_EDGE_IDS = "WITH_EDGE_IDS",
+}
+
+export interface UpdateVillageRequest {
+  village: Village | null;
+}
+
+export interface DeleteVillageRequest {
+  id: string;
+}
+
+export interface ListVillageRequest {
+  pageSize: number;
+  pageToken: string;
+  view: ListVillageRequest_View;
+}
+
+export enum ListVillageRequest_View {
+  VIEW_UNSPECIFIED = "VIEW_UNSPECIFIED",
+  BASIC = "BASIC",
+  WITH_EDGE_IDS = "WITH_EDGE_IDS",
+}
+
+export interface ListVillageResponse {
+  villageList: Village[];
+  nextPageToken: string;
+}
+
+export interface BatchCreateVillagesRequest {
+  requests: CreateVillageRequest[];
+}
+
+export interface BatchCreateVillagesResponse {
+  villages: Village[];
+}
+
 export interface DepartmentService {
   Create(request: CreateDepartmentRequest): Promise<Department>;
   Get(request: GetDepartmentRequest): Promise<Department>;
@@ -426,6 +537,15 @@ export interface RoleService {
   BatchCreate(request: BatchCreateRolesRequest): Promise<BatchCreateRolesResponse>;
 }
 
+export interface StreetService {
+  Create(request: CreateStreetRequest): Promise<Street>;
+  Get(request: GetStreetRequest): Promise<Street>;
+  Update(request: UpdateStreetRequest): Promise<Street>;
+  Delete(request: DeleteStreetRequest): Promise<Empty>;
+  List(request: ListStreetRequest): Promise<ListStreetResponse>;
+  BatchCreate(request: BatchCreateStreetsRequest): Promise<BatchCreateStreetsResponse>;
+}
+
 export interface SysApiService {
   Create(request: CreateSysApiRequest): Promise<SysApi>;
   Get(request: GetSysApiRequest): Promise<SysApi>;
@@ -442,4 +562,13 @@ export interface UserService {
   Delete(request: DeleteUserRequest): Promise<Empty>;
   List(request: ListUserRequest): Promise<ListUserResponse>;
   BatchCreate(request: BatchCreateUsersRequest): Promise<BatchCreateUsersResponse>;
+}
+
+export interface VillageService {
+  Create(request: CreateVillageRequest): Promise<Village>;
+  Get(request: GetVillageRequest): Promise<Village>;
+  Update(request: UpdateVillageRequest): Promise<Village>;
+  Delete(request: DeleteVillageRequest): Promise<Empty>;
+  List(request: ListVillageRequest): Promise<ListVillageResponse>;
+  BatchCreate(request: BatchCreateVillagesRequest): Promise<BatchCreateVillagesResponse>;
 }

@@ -17,6 +17,7 @@ import {
 import { type Empty } from "../../google/protobuf/empty.pb";
 
 export interface SysApiService {
+  CenterMap(request: GetSysApiRequest): Promise<SysApi>;
   Create(request: CreateSysApiRequest): Promise<SysApi>;
   Get(request: GetSysApiRequest): Promise<SysApi>;
   Update(request: UpdateSysApiRequest): Promise<SysApi>;
