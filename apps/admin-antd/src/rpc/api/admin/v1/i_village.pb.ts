@@ -5,8 +5,24 @@
 // source: admin/v1/i_village.proto
 
 /* eslint-disable */
-import { type ListVillageRequest, type ListVillageResponse } from "../../entpb/entpb.pb";
+import {
+  type BatchCreateVillagesRequest,
+  type BatchCreateVillagesResponse,
+  type CreateVillageRequest,
+  type DeleteVillageRequest,
+  type GetVillageRequest,
+  type ListVillageRequest,
+  type ListVillageResponse,
+  type UpdateVillageRequest,
+  type Village,
+} from "../../entpb/entpb.pb";
+import { type Empty } from "../../google/protobuf/empty.pb";
 
 export interface VillageService {
+  Create(request: CreateVillageRequest): Promise<Village>;
+  Get(request: GetVillageRequest): Promise<Village>;
+  Update(request: UpdateVillageRequest): Promise<Village>;
+  Delete(request: DeleteVillageRequest): Promise<Empty>;
   List(request: ListVillageRequest): Promise<ListVillageResponse>;
+  BatchCreate(request: BatchCreateVillagesRequest): Promise<BatchCreateVillagesResponse>;
 }

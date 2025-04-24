@@ -2,10 +2,12 @@
 // versions:
 //   protoc-gen-ts_proto  v2.7.0
 //   protoc               unknown
-// source: admin/v1/i_api.proto
+// source: admin/v1/i_sysapi.proto
 
 /* eslint-disable */
 import {
+  type BatchCreateSysApisRequest,
+  type BatchCreateSysApisResponse,
   type CreateSysApiRequest,
   type DeleteSysApiRequest,
   type GetSysApiRequest,
@@ -17,10 +19,10 @@ import {
 import { type Empty } from "../../google/protobuf/empty.pb";
 
 export interface SysApiService {
-  CenterMap(request: GetSysApiRequest): Promise<SysApi>;
   Create(request: CreateSysApiRequest): Promise<SysApi>;
   Get(request: GetSysApiRequest): Promise<SysApi>;
   Update(request: UpdateSysApiRequest): Promise<SysApi>;
   Delete(request: DeleteSysApiRequest): Promise<Empty>;
   List(request: ListSysApiRequest): Promise<ListSysApiResponse>;
+  BatchCreate(request: BatchCreateSysApisRequest): Promise<BatchCreateSysApisResponse>;
 }

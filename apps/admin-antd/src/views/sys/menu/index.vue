@@ -13,7 +13,9 @@ import { defMenuService } from '#/rpc';
 
 import MenuForm from './form.vue';
 import { type ActionItem, TableAction } from '#/components/table/table-action';
-import { tableColumns } from './schemas';
+import { tableColumns, dataFormSchemas, searchFormSchemas } from './schemas';
+
+import PageModal from '#/components/page/page-model.vue';
 
 defineOptions({
   name: 'MenuManagement',
@@ -69,13 +71,11 @@ const gridOptions: VxeGridProps = {
   proxyConfig: {
     response: {
       result: 'menuList',
-      total: 'total',
       list: 'menuList',
     },
     ajax: {
       query: async (_formValues) => {
-        const res = await defMenuService
-          .ListMenu({});
+        const res = await defMenuService.ListMenu({});
         return res;
       },
     },
@@ -117,14 +117,12 @@ async function batchDelete(ids: any) {
 </script>
 
 <template>
-  <Page auto-content-height>
-    <FormModal />
-    <Grid>
-      <template #toolbar-tools>
-        <Button type="primary" @click="openFormModal">
-          {{ $t('sys.menu.addMenu') }}
-        </Button>
-      </template>
-    </Grid>
-  </Page>
+  <PageModal
+    title="菜单"
+    :formOptions="searchFormSchemas"
+    :gridOptions="tableColumns"
+    :dataFormSchemas="dataFormSchemas"
+    :service="defMenuService"
+  >
+  </PageModal>
 </template>

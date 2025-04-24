@@ -88,6 +88,43 @@ export const tableColumns: VxeGridProps = {
       formatter: 'formatDateTime',
     },
   ],
+  proxyConfig: {
+    response: {
+      result: 'menuList',
+      list: 'menuList',
+    },
+    ajax: {
+      query: async (_formValues) => {
+        const res = await defMenuService.List({});
+        return res;
+      },
+    },
+  },
+  pagerConfig: {
+    enabled: false,
+  },
+  treeConfig: {
+    transform: true,
+    parentField: 'parentId',
+    rowField: 'id',
+  },
+};
+
+export const searchFormSchemas: VbenFormProps = {
+  schema: [
+    {
+      fieldName: 'name',
+      label: $t('sys.department.name'),
+      component: 'Input',
+      rules: z.string().max(50).optional(),
+    },
+    {
+      fieldName: 'leader',
+      label: $t('sys.department.leader'),
+      component: 'Input',
+      rules: z.string().max(20).optional(),
+    },
+  ],
 };
 
 export const dataFormSchemas: VbenFormProps = {

@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import type { DepartmentInfo } from '#/api/sys/model/departmentModel';
-
 import { ref } from 'vue';
 
 import { useVbenModal } from '@vben/common-ui';
@@ -9,37 +7,27 @@ import { $t } from '@vben/locales';
 import { message } from 'ant-design-vue';
 
 import { useVbenForm } from '#/adapter/form';
-import { defDepartmentService } from '#/rpc';
-
-import { dataFormSchemas } from './schemas';
 
 defineOptions({
-  name: 'DepartmentForm',
+  name: 'ConfigurationForm',
 });
 
 const record = ref();
+const schema = ref();
 const isUpdate = ref(false);
 const gridApi = ref();
 
-async function onSubmit(values: Record<string, any>) {
-  const result = isUpdate.value
-    ? await defDepartmentService.Update(values as DepartmentInfo)
-    : await defDepartmentService.Create(values as DepartmentInfo);
-  if (result.code === 0) {
-    message.success(result.msg);
-    gridApi.value.reload();
-  }
-}
+async function onSubmit(values: Record<string, any>) {}
 
 const [Form, formApi] = useVbenForm({
   handleSubmit: onSubmit,
-  schema: [...(dataFormSchemas.schema as any)],
+  schema: schema.value || [],
   showDefaultActions: false,
   layout: 'vertical',
 });
 
 const [Modal, modalApi] = useVbenModal({
-  fullscreenButton: true,
+  fullscreenButton: false,
   onCancel() {
     modalApi.close();
   },
@@ -56,8 +44,8 @@ const [Modal, modalApi] = useVbenModal({
     }
     modalApi.setState({
       title: isUpdate.value
-        ? $t('sys.department.editDepartment')
-        : $t('sys.department.addDepartment'),
+        ? $t('sys.configuration.editConfiguration')
+        : $t('sys.configuration.addConfiguration'),
     });
   },
 });

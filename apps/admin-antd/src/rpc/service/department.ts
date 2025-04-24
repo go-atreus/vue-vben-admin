@@ -18,6 +18,7 @@ export class DepartmentServiceImpl implements OrganizationService {
   }
 
   async Delete(request: DeleteDepartmentRequest): Promise<Empty> {
+    console.log("request",request)
     return await requestClient.delete<Empty>(`/department/${request.id}`);
   }
 

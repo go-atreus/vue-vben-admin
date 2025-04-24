@@ -5,8 +5,24 @@
 // source: admin/v1/i_street.proto
 
 /* eslint-disable */
-import { type ListStreetRequest, type ListStreetResponse } from "../../entpb/entpb.pb";
+import {
+  type BatchCreateStreetsRequest,
+  type BatchCreateStreetsResponse,
+  type CreateStreetRequest,
+  type DeleteStreetRequest,
+  type GetStreetRequest,
+  type ListStreetRequest,
+  type ListStreetResponse,
+  type Street,
+  type UpdateStreetRequest,
+} from "../../entpb/entpb.pb";
+import { type Empty } from "../../google/protobuf/empty.pb";
 
 export interface StreetService {
+  Create(request: CreateStreetRequest): Promise<Street>;
+  Get(request: GetStreetRequest): Promise<Street>;
+  Update(request: UpdateStreetRequest): Promise<Street>;
+  Delete(request: DeleteStreetRequest): Promise<Empty>;
   List(request: ListStreetRequest): Promise<ListStreetResponse>;
+  BatchCreate(request: BatchCreateStreetsRequest): Promise<BatchCreateStreetsResponse>;
 }
